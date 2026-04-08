@@ -1,0 +1,77 @@
+// Version: 1.0.0
+type EventCategory__543662769 = {#entertainment; #events; #travel};
+type Event__543096582 =
+  {
+    category : EventCategory__543662769;
+    date : Text;
+    description : Text;
+    featured : Bool;
+    id : Nat;
+    imageUrl : Text;
+    location : Text;
+    title : Text
+  };
+type InquirySubmission__643020802 =
+  {
+    email : Text;
+    id : Nat;
+    message : Text;
+    name : Text;
+    phone : Text;
+    serviceType : ServiceType__884622535;
+    timestamp : Int
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type ServiceType__884622535 = {#entertainment; #events; #travel};
+type TeamMember__134766040 =
+  {bio : Text; id : Nat; imageUrl : Text; name : Text; role : Text};
+type Testimonial__128497339 =
+  {clientName : Text; company : Text; id : Nat; quote : Text; rating : Nat};
+type TravelPackage__795911074 =
+  {
+    destination : Text;
+    duration : Text;
+    featured : Bool;
+    highlights : [Text];
+    id : Nat;
+    imageUrl : Text;
+    priceRange : Text
+  };
+actor {
+  stable events :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Event__543096582]];
+      var elementIndex : Nat__490723111
+    };
+  stable inquiries :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?InquirySubmission__643020802]];
+      var elementIndex : Nat__490723111
+    };
+  stable nextEventId : {var value : Nat};
+  stable nextInquiryId : {var value : Nat};
+  stable nextMemberId : {var value : Nat};
+  stable nextPackageId : {var value : Nat};
+  stable nextTestimonialId : {var value : Nat};
+  stable packages :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?TravelPackage__795911074]];
+      var elementIndex : Nat__490723111
+    };
+  stable teamMembers :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?TeamMember__134766040]];
+      var elementIndex : Nat__490723111
+    };
+  stable testimonials :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Testimonial__128497339]];
+      var elementIndex : Nat__490723111
+    }
+};

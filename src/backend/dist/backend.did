@@ -1,0 +1,65 @@
+type TravelPackage = 
+ record {
+   destination: text;
+   duration: text;
+   featured: bool;
+   highlights: vec text;
+   id: nat;
+   imageUrl: text;
+   priceRange: text;
+ };
+type Testimonial = 
+ record {
+   clientName: text;
+   company: text;
+   id: nat;
+   quote: text;
+   rating: nat;
+ };
+type TeamMember = 
+ record {
+   bio: text;
+   id: nat;
+   imageUrl: text;
+   name: text;
+   role: text;
+ };
+type ServiceType = 
+ variant {
+   entertainment;
+   events;
+   travel;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok: nat;
+ };
+type EventCategory = 
+ variant {
+   entertainment;
+   events;
+   travel;
+ };
+type Event = 
+ record {
+   category: EventCategory;
+   date: text;
+   description: text;
+   featured: bool;
+   id: nat;
+   imageUrl: text;
+   location: text;
+   title: text;
+ };
+service : {
+  getEvents: () -> (vec Event) query;
+  getFeaturedEvents: () -> (vec Event) query;
+  getFeaturedPackages: () -> (vec TravelPackage) query;
+  getTeamMembers: () -> (vec TeamMember) query;
+  getTestimonials: () -> (vec Testimonial) query;
+  getTravelPackages: () -> (vec TravelPackage) query;
+  seedSampleData: () -> ();
+  submitInquiry: (name: text, email: text, phone: text, serviceType:
+   ServiceType, message: text) -> (Result);
+}
